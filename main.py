@@ -8,15 +8,16 @@ from PyQt5.QtWidgets import QFileDialog, QPushButton, QInputDialog, QColorDialog
 from PyQt5.QtGui import QPainter, QColor, QPen
 from PyQt5.QtCore import Qt, QPoint
 from PyQt5 import uic
+from UI import Ui_MainWindow
 
-
-class DrawTheSun(QMainWindow):
+class DrawTheSun(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
 
         self.flag = 0
         self.runButton.clicked.connect(self.run)
+        self.setWindowTitle('Git и случайные окружности')
 
     def run(self):
         self.flag = 1
@@ -31,7 +32,8 @@ class DrawTheSun(QMainWindow):
 
     def draw_figure(self, qp):
         size = randint(20, 300)
-        qp.setBrush(QColor('yellow'))
+        r, g, b = randint(0, 255), randint(0, 255), randint(0, 255)
+        qp.setBrush(QColor(r, g, b))
         qp.eraseRect(0, 0, 1000, 1000)
         qp.drawEllipse(self.width() // 2 - size // 2, self.height() // 2 - size // 2, size, size)
         self.flag = 0
