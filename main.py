@@ -17,7 +17,7 @@ class DrawTheSun(QMainWindow, Ui_MainWindow):
 
         self.flag = 0
         self.runButton.clicked.connect(self.run)
-        self.setWindowTitle('Git и случайные окружности')
+        self.setWindowTitle('Git и случайные окружности!!!')
 
     def run(self):
         self.flag = 1
